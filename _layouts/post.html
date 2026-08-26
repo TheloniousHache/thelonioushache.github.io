@@ -4,6 +4,10 @@ layout: default
 
 <article class="post">
 
+  <!-- =====================================================
+       En-tête de l'article
+       ===================================================== -->
+
   <header class="post-header">
 
     <p class="post-date">
@@ -44,7 +48,7 @@ layout: default
 
 
   <!-- =====================================================
-       Article
+       Contenu de l'article
        ===================================================== -->
 
   <div class="post-content">
@@ -55,7 +59,7 @@ layout: default
 
 
   <!-- =====================================================
-       Sharing
+       Partage
        ===================================================== -->
 
   <section class="article-share">
@@ -66,32 +70,57 @@ layout: default
 
     <div class="share-buttons">
 
+      <!-- LinkedIn -->
+
       <a
         class="share-button"
         href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Partager cet article sur LinkedIn"
       >
+
+        <svg
+          class="share-icon linkedin-share-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <rect x="0" y="0" width="24" height="24" rx="2.5" fill="currentColor"/>
+
+          <path
+            d="M6.2 8.1H3.6V20h2.6V8.1ZM4.9 4C4.05 4 3.35 4.7 3.35 5.55S4.05 7.1 4.9 7.1s1.55-.7 1.55-1.55S5.75 4 4.9 4ZM20.65 13.15c0-3.58-1.91-5.25-4.46-5.25-2.06 0-2.98 1.13-3.49 1.92V8.1h-2.6V20h2.6v-5.88c0-1.55.29-3.05 2.21-3.05 1.9 0 1.92 1.77 1.92 3.15V20h2.6l.01-6.85Z"
+            fill="#ffffff"
+          />
+        </svg>
+
         LinkedIn
+
       </a>
 
 
-      <a
-        class="share-button"
-        href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        X
-      </a>
-
+      <!-- Copier le lien -->
 
       <button
         class="share-button"
         type="button"
         onclick="copyArticleLink(this)"
       >
+
+        <svg
+          class="share-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M16 8a3 3 0 0 0-2.12.88l-4.1 4.1a3 3 0 0 0 4.24 4.24l1.72-1.72a1 1 0 1 0-1.42-1.42l-1.72 1.72a1 1 0 0 1-1.41-1.41l4.1-4.1a1 1 0 0 1 1.41 1.41l-1.05 1.05a1 1 0 0 0 1.42 1.42l1.05-1.05A3 3 0 0 0 16 8ZM8 16a3 3 0 0 0 2.12-.88l4.1-4.1a3 3 0 0 0-4.24-4.24l-1.72 1.72a1 1 0 0 0 1.42 1.42l1.72-1.72a1 1 0 0 1 1.41 1.41l-4.1 4.1a1 1 0 0 1-1.41-1.41l1.05-1.05a1 1 0 0 0-1.42-1.42l-1.05 1.05A3 3 0 0 0 8 16Z"
+            fill="currentColor"
+          />
+        </svg>
+
         Copier le lien
+
       </button>
 
     </div>
@@ -100,10 +129,13 @@ layout: default
 
 
   <!-- =====================================================
-       Previous / Next
+       Navigation entre les articles
        ===================================================== -->
 
-  <nav class="post-navigation" aria-label="Navigation entre les articles">
+  <nav
+    class="post-navigation"
+    aria-label="Navigation entre les articles"
+  >
 
     {% if page.previous %}
 
@@ -155,9 +187,9 @@ layout: default
 </article>
 
 
-<!-- =======================================================
-     Copy link
-     ======================================================= -->
+<!-- =====================================================
+     JavaScript : copier le lien
+     ===================================================== -->
 
 <script>
 
@@ -167,12 +199,14 @@ function copyArticleLink(button) {
 
   navigator.clipboard.writeText(url).then(function() {
 
-    const originalText = button.textContent;
+    const originalText = button.innerHTML;
 
-    button.textContent = "Lien copié ✓";
+    button.innerHTML = "Lien copié ✓";
 
     setTimeout(function() {
-      button.textContent = originalText;
+
+      button.innerHTML = originalText;
+
     }, 2000);
 
   });
