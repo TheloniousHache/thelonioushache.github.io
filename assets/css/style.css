@@ -1,4 +1,60 @@
 /* =========================================================
+   ÉNERGIE EN PERSPECTIVE
+   Design system
+   ========================================================= */
+
+
+/* =========================================================
+   Fonts
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap');
+
+
+/* =========================================================
+   Variables
+   ========================================================= */
+
+:root {
+
+  /* Colors */
+
+  --color-background: #ffffff;
+
+  --color-text: #1f2933;
+
+  --color-text-light: #667085;
+
+  --color-primary: #173f5f;
+
+  --color-primary-light: #e8f0f5;
+
+  --color-accent: #2f6f62;
+
+  --color-border: #e1e5e8;
+
+  --color-border-light: #edf0f2;
+
+
+  /* Typography */
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --font-serif: "Source Serif 4", Georgia,
+                "Times New Roman", serif;
+
+
+  /* Layout */
+
+  --content-width: 900px;
+
+  --reading-width: 750px;
+
+}
+
+
+/* =========================================================
    Base
    ========================================================= */
 
@@ -8,14 +64,34 @@
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.7;
-  color: #222;
-  background: #fff;
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-family: var(--font-serif);
+
+  line-height: 1.75;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* =========================================================
+   Links
+   ========================================================= */
+
+a {
+  color: var(--color-primary);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
 }
 
 
@@ -24,46 +100,186 @@ body {
    ========================================================= */
 
 .site-header {
-  border-bottom: 1px solid #ddd;
-  padding: 2.5rem 1.5rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+
+  padding: 2rem 1.5rem 1.5rem;
+
+  background: #fff;
 }
 
 .site-header-inner {
-  max-width: 900px;
+  max-width: var(--content-width);
+
   margin: 0 auto;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 3rem;
 }
 
-.site-title {
-  display: block;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #111;
+
+/* =========================================================
+   Brand
+   ========================================================= */
+
+.brand-link {
+  display: flex;
+  align-items: center;
+
+  gap: 0.9rem;
+
+  color: inherit;
+
   text-decoration: none;
 }
 
-.site-description {
-  margin: 0.25rem 0 1.5rem;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.9rem;
-  color: #666;
+
+/* Logo */
+
+.logo-mark {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1.5px solid var(--color-primary);
+
+  color: var(--color-primary);
+
+  font-family: var(--font-sans);
+
+  font-size: 0.72rem;
+
+  font-weight: 600;
+
+  letter-spacing: -0.04em;
+
+  line-height: 1;
+
+  position: relative;
 }
+
+
+/*
+   Petite ligne décorative du monogramme
+*/
+
+.logo-mark::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -4px;
+  right: -4px;
+
+  width: 12px;
+  height: 1.5px;
+
+  background: var(--color-accent);
+}
+
+
+/* Site title */
+
+.site-title {
+  font-family: var(--font-sans);
+
+  font-size: 1.35rem;
+
+  font-weight: 600;
+
+  letter-spacing: -0.025em;
+
+  line-height: 1.2;
+
+  color: var(--color-text);
+}
+
+
+/* Site description */
+
+.site-description {
+  margin-top: 0.3rem;
+
+  font-family: var(--font-sans);
+
+  font-size: 0.73rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.01em;
+
+  color: var(--color-text-light);
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   Navigation
+   ========================================================= */
 
 .site-nav {
   display: flex;
-  gap: 1.5rem;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.9rem;
+
+  align-items: center;
+
+  gap: 1.8rem;
+
+  font-family: var(--font-sans);
+
+  font-size: 0.86rem;
+
+  font-weight: 500;
 }
 
 .site-nav a {
-  color: #333;
+  position: relative;
+
+  padding: 0.3rem 0;
+
+  color: var(--color-text);
+
   text-decoration: none;
 }
 
+
+/*
+   Élégant soulignement au survol
+*/
+
+.site-nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -3px;
+
+  width: 100%;
+  height: 1px;
+
+  background: var(--color-primary);
+
+  transform: scaleX(0);
+
+  transform-origin: right;
+
+  transition: transform 180ms ease;
+}
+
 .site-nav a:hover {
-  text-decoration: underline;
+  color: var(--color-primary);
+}
+
+.site-nav a:hover::after {
+  transform: scaleX(1);
+
+  transform-origin: left;
 }
 
 
@@ -72,36 +288,58 @@ body {
    ========================================================= */
 
 .site-main {
-  max-width: 900px;
+  max-width: var(--content-width);
+
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+
+  padding: 4.5rem 1.5rem 5rem;
 }
+
+
+/* =========================================================
+   Typography
+   ========================================================= */
 
 h1,
 h2,
 h3 {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.25;
-  color: #111;
+  font-family: var(--font-sans);
+
+  color: var(--color-text);
+
+  line-height: 1.2;
+
+  letter-spacing: -0.025em;
 }
 
 h1 {
-  font-size: 2.4rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.55rem;
+
+  font-weight: 600;
+
+  margin-top: 0;
+
+  margin-bottom: 1.25rem;
 }
 
 h2 {
   font-size: 1.5rem;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+
+  font-weight: 600;
+
+  margin-top: 3.5rem;
+
+  margin-bottom: 1.25rem;
 }
 
 h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
+
+  font-weight: 600;
 }
 
-a {
-  color: #333;
+p {
+  margin-top: 0;
 }
 
 
@@ -110,8 +348,9 @@ a {
    ========================================================= */
 
 .home-intro {
-  max-width: 750px;
-  margin-bottom: 4rem;
+  max-width: var(--reading-width);
+
+  margin-bottom: 5rem;
 }
 
 .home-intro h1 {
@@ -120,57 +359,127 @@ a {
 
 .lead {
   font-size: 1.2rem;
-  line-height: 1.6;
+
+  line-height: 1.65;
+
+  color: #394550;
 }
+
+
+/* Sections */
 
 .home-section {
-  margin-top: 4rem;
+  margin-top: 4.5rem;
+}
+
+.home-section > h2 {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.8rem;
+}
+
+.home-section > h2::after {
+  content: "";
+
+  flex: 1;
+
+  height: 1px;
+
+  background: var(--color-border);
 }
 
 
-/* Derniers articles sur la page d'accueil */
+/* =========================================================
+   Latest articles — Homepage
+   ========================================================= */
 
 .post-preview {
-  padding: 1.5rem 0;
-  border-top: 1px solid #ddd;
+  padding: 1.25rem 0;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.post-preview:last-child {
+  border-bottom: 1px solid var(--color-border);
 }
 
 .post-preview h3 {
-  margin: 0.25rem 0 0.5rem;
+  margin: 0.3rem 0 0.25rem;
 }
 
 .post-preview h3 a {
+  color: var(--color-text);
+
   text-decoration: none;
+
+  transition: color 150ms ease;
 }
 
 .post-preview h3 a:hover {
-  text-decoration: underline;
+  color: var(--color-primary);
 }
 
-.post-date {
+.post-preview .post-date {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8rem;
+
+  font-family: var(--font-sans);
+
+  font-size: 0.75rem;
+
+  color: var(--color-text-light);
+
   line-height: 1.2;
-  color: #777;
 }
 
 
-/* Thématiques */
+/* =========================================================
+   Topics
+   ========================================================= */
 
 .topics {
   display: grid;
+
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+
+  gap: 1px;
+
+  background: var(--color-border);
+
+  border: 1px solid var(--color-border);
 }
 
 .topic {
-  border-top: 1px solid #ddd;
-  padding-top: 1rem;
+  padding: 1.5rem;
+
+  background: #fff;
+
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.topic:hover {
+  background: var(--color-primary-light);
 }
 
 .topic h3 {
   margin-top: 0;
+
+  margin-bottom: 0.5rem;
+
+  color: var(--color-primary);
+}
+
+.topic p {
+  margin-bottom: 0;
+
+  font-size: 0.95rem;
+
+  color: var(--color-text-light);
+
+  line-height: 1.6;
 }
 
 
@@ -179,114 +488,346 @@ a {
    ========================================================= */
 
 .page {
-  max-width: 750px;
+  max-width: var(--reading-width);
+
+  margin: 0 auto;
 }
 
 .page-content {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 
 /* =========================================================
-   Articles
+   Articles — list page
    ========================================================= */
 
-
-/* ---------------------------------------------------------
-   Page listant tous les articles
-   --------------------------------------------------------- */
+.article-list {
+  margin-top: 2.5rem;
+}
 
 .article-list-item {
-  padding: 1rem 0;
-  border-top: 1px solid #ddd;
+  padding: 1.15rem 0;
+
+  border-top: 1px solid var(--color-border);
 }
+
+.article-list-item:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+/* Date */
 
 .article-date {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8rem;
+
+  font-family: var(--font-sans);
+
+  font-size: 0.75rem;
+
   line-height: 1.2;
-  color: #777;
+
+  color: var(--color-text-light);
 }
 
+
+/* Title */
+
 .article-title {
-  margin: 0.2rem 0 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.25;
+  margin: 0.25rem 0 0;
+
+  font-family: var(--font-sans);
+
+  font-size: 1.35rem;
+
+  font-weight: 600;
+
+  line-height: 1.3;
 }
 
 .article-title a {
-  color: #333;
+  color: var(--color-text);
+
   text-decoration: none;
+
+  transition: color 150ms ease;
 }
 
 .article-title a:hover {
-  text-decoration: underline;
+  color: var(--color-primary);
 }
 
 
-/* ---------------------------------------------------------
-   Article individuel
-   --------------------------------------------------------- */
+/* =========================================================
+   Individual article
+   ========================================================= */
 
 .post {
-  max-width: 750px;
+  max-width: var(--reading-width);
+
   margin: 0 auto;
 }
 
+
+/* Article header */
+
 .post-header {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 
-/* Date de l'article */
+/* Date */
 
 .post-header .post-date {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.6rem;
+
+  font-family: var(--font-sans);
+
+  font-size: 0.75rem;
+
+  color: var(--color-text-light);
+
+  line-height: 1.2;
 }
 
 
-/* Titre de l'article */
+/* Title */
 
 .post-header h1 {
   margin-top: 0;
+
   margin-bottom: 0;
 }
 
 
-/* Sous-titre de l'article */
+/* Subtitle */
 
 .post-subtitle {
-  margin: 0.6rem 0 0;
-  font-family: Georgia, "Times New Roman", serif;
+  margin: 0.7rem 0 0;
+
+  font-family: var(--font-serif);
+
   font-size: 1.15rem;
+
   font-style: italic;
-  font-weight: normal;
+
+  font-weight: 400;
+
   line-height: 1.5;
-  color: #666;
+
+  color: var(--color-text-light);
 }
 
 
-/* Catégories */
+/* Categories */
 
 .post-categories {
-  margin-top: 0.75rem;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8rem;
-  color: #777;
+  margin: 1rem 0 0;
+
+  font-family: var(--font-sans);
+
+  font-size: 0.75rem;
+
+  color: var(--color-accent);
 }
 
 
-/* Contenu de l'article */
+/* =========================================================
+   Article content
+   ========================================================= */
+
+.post-content {
+  font-size: 1.05rem;
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
 
 .post-content h2 {
-  margin-top: 3rem;
+  margin-top: 3.5rem;
+
+  margin-bottom: 1rem;
 }
 
 .post-content h3 {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+
+  margin-bottom: 0.75rem;
+}
+
+
+/* Links inside articles */
+
+.post-content a {
+  color: var(--color-primary);
+
+  text-decoration-thickness: 1px;
+
+  text-underline-offset: 3px;
+}
+
+.post-content a:hover {
+  color: var(--color-accent);
+}
+
+
+/* Lists */
+
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.5rem;
+
+  padding-left: 1.5rem;
+}
+
+
+/* Blockquotes */
+
+.post-content blockquote {
+  margin: 2rem 0;
+
+  padding: 0.5rem 1.5rem;
+
+  border-left: 2px solid var(--color-primary);
+
+  color: var(--color-text-light);
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   Article sharing
+   ========================================================= */
+
+.article-share {
+  margin-top: 4rem;
+
+  padding-top: 1.5rem;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.article-share-title {
+  margin-bottom: 0.8rem;
+
+  font-family: var(--font-sans);
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+
+  color: var(--color-text-light);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+}
+
+.share-buttons {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.6rem;
+}
+
+.share-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  padding: 0.45rem 0.7rem;
+
+  border: 1px solid var(--color-border);
+
+  background: #fff;
+
+  color: var(--color-text);
+
+  font-family: var(--font-sans);
+
+  font-size: 0.75rem;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.share-button:hover {
+  border-color: var(--color-primary);
+
+  background: var(--color-primary-light);
+
+  color: var(--color-primary);
+}
+
+
+/* =========================================================
+   Article navigation
+   ========================================================= */
+
+.post-navigation {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 2rem;
+
+  margin-top: 4rem;
+
+  padding-top: 2rem;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.post-navigation-item {
+  font-family: var(--font-sans);
+}
+
+.post-navigation-item.next {
+  text-align: right;
+}
+
+.post-navigation-label {
+  display: block;
+
+  margin-bottom: 0.4rem;
+
+  font-size: 0.7rem;
+
+  color: var(--color-text-light);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+}
+
+.post-navigation-title {
+  font-size: 0.9rem;
+
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+.post-navigation a {
+  color: var(--color-text);
+
+  text-decoration: none;
+}
+
+.post-navigation a:hover {
+  color: var(--color-primary);
 }
 
 
@@ -295,37 +836,56 @@ a {
    ========================================================= */
 
 .site-footer {
-  max-width: 900px;
+  max-width: var(--content-width);
+
   margin: 0 auto;
+
   padding: 2rem 1.5rem 3rem;
-  border-top: 1px solid #ddd;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8rem;
-  color: #777;
+
+  border-top: 1px solid var(--color-border);
+
+  font-family: var(--font-sans);
+
+  font-size: 0.75rem;
+
+  color: var(--color-text-light);
 }
 
 .footer-inner {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   gap: 1rem;
 }
 
+
+/* LinkedIn */
+
 .linkedin-link {
   display: inline-flex;
+
   align-items: center;
-  gap: 0.4rem;
-  color: #666;
+  justify-content: center;
+
+  color: var(--color-text-light);
+
   text-decoration: none;
+
+  transition: color 150ms ease;
 }
 
 .linkedin-link:hover {
-  color: #111;
+  color: var(--color-primary);
 }
 
 .linkedin-icon {
   width: 18px;
+
   height: 18px;
+
   fill: currentColor;
 }
 
@@ -334,31 +894,70 @@ a {
    Mobile
    ========================================================= */
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
 
   .site-header {
     padding-top: 1.5rem;
   }
 
+  .site-header-inner {
+    display: block;
+  }
+
+  .brand {
+    margin-bottom: 1.5rem;
+  }
+
   .site-nav {
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 1.4rem;
   }
 
   .site-main {
-    padding-top: 2.5rem;
+    padding-top: 3rem;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
 
   .topics {
     grid-template-columns: 1fr;
   }
 
-  .footer-inner {
+  .post-navigation {
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+  }
+
+  .post-navigation-item.next {
+    text-align: left;
+  }
+
+}
+
+
+@media (max-width: 450px) {
+
+  .site-description {
+    max-width: 240px;
+  }
+
+  .site-nav {
+    gap: 1.1rem;
+
+    font-size: 0.8rem;
+  }
+
+  .site-main {
+    padding-left: 1.2rem;
+
+    padding-right: 1.2rem;
+  }
+
+  .share-buttons {
     flex-direction: column;
+
     align-items: flex-start;
   }
 
