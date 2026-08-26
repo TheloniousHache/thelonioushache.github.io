@@ -878,25 +878,19 @@ p {
 
   justify-content: center;
 
-  color: var(--color-text-light);
-
   text-decoration: none;
 
-  transition:
-    color 150ms ease,
-    transform 150ms ease;
+  transition: transform 150ms ease;
 }
 
 .linkedin-link:hover {
-  color: var(--color-primary);
-
   transform: translateY(-1px);
 }
 
 .linkedin-icon {
-  width: 19px;
+  width: 22px;
 
-  height: 19px;
+  height: 22px;
 
   display: block;
 }
