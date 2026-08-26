@@ -17,7 +17,9 @@ Tous mes articles consacrés aux politiques publiques de l'énergie.
   </div>
 
   <div class="article-title">
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <a href="{{ post.url | relative_url }}">
+      {{ post.title }}
+    </a>
   </div>
 
 </div>
