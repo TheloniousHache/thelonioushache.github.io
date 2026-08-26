@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <rect
+    width="64"
+    height="64"
+    rx="8"
+    fill="#173f5f"
+  />
+
+  <text
+    x="32"
+    y="39"
+    text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="22"
+    font-weight="600"
+    letter-spacing="-1"
+    fill="#ffffff"
+  >
+    TH
+  </text>
+
+  <rect
+    x="43"
+    y="48"
+    width="10"
+    height="2"
+    fill="#2f6f62"
+  />
+
+</svg>
